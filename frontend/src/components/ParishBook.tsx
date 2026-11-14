@@ -7,11 +7,7 @@ import {
   Maximize2,
   Minimize2,
   Sparkles,
-  Heart,
-  Bookmark,
-  Calendar,
-  MapPin,
-  Flame,
+  Cross,
 } from 'lucide-react';
 import parishLogo from '../assets/images/logo_igreja.svg';
 import igrejaImg from '../assets/images/igreja.jpg';
@@ -22,121 +18,134 @@ interface Spread {
   id: number;
   label: string;
   leftPage?: {
-    tag: string;
+    verseRef?: string;
+    chapter?: string;
     title: string;
     subtitle?: string;
     image?: string;
     imageCaption?: string;
     content: string[];
-    highlight?: string;
+    sacredVerse?: string;
     pageNumber?: number;
   };
   rightPage?: {
-    tag: string;
+    verseRef?: string;
+    chapter?: string;
     title: string;
     subtitle?: string;
     image?: string;
     imageCaption?: string;
     content: string[];
-    highlight?: string;
+    sacredVerse?: string;
     pageNumber?: number;
   };
 }
 
-const SPREADS: Spread[] = [
-  // Spread 0: Capa Frontal Dura (Cover)
+const BIBLE_SPREADS: Spread[] = [
+  // 0: Capa de Couro da Bíblia Sagrada
   {
     id: 0,
-    label: 'Capa',
+    label: 'Capa da Bíblia',
   },
-  // Spread 1: Páginas 1 e 2 - Acolhimento & Santa Isabel
+  // 1: Prólogo & Santa Isabel
   {
     id: 1,
-    label: 'Acolhida & Padroeira',
+    label: 'Acolhida & Santa Isabel',
     leftPage: {
-      tag: 'Acolhimento Pastoral',
-      title: 'Uma Casa de Fé e Oração',
-      subtitle: 'Memória da Paróquia Rainha Santa Isabel',
+      chapter: 'LIVRO DO GÊNESIS PAROQUIAL',
+      verseRef: 'Is 1, 1-4',
+      title: 'A Casa do Senhor',
+      subtitle: '“Quão amáveis são os teus tabernáculos, Senhor dos Exércitos!” (Sl 84)',
       content: [
-        'Sejam bem-vindos às páginas da nossa história viva. A Paróquia Rainha Santa Isabel nasceu do coração de uma comunidade generosa em Casa Verde, que encontrou na fé e na fraternidade os alicerces para erguer um templo de amor.',
-        'Ao longo de décadas, famílias inteiras foram batizadas, casadas e alimentadas pela Sagrada Eucaristia neste solo sagrado. Aqui, cada tijolo guarda uma oração, e cada celebração renova a certeza de que Deus habita entre nós.',
+        'Eis o memorial sagrado erguido sob o manto de Santa Isabel da Hungria. Em solo abençoado de Casa Verde, reuniu-se um povo eleito para erguer um altar vivo de louvor, oração e caridade contínua.',
+        'Cada tijolo assentado é testemunho de gerações que aqui dobraram os joelhos, batizaram seus filhos, selaram matrimônios e encontraram no Pão da Vida o alento para suas jornadas terrenas.',
       ],
-      highlight:
-        '“Onde houver caridade e amor verdadeiro, ali Deus habita e faz morada perpétua.”',
+      sacredVerse:
+        '“Vinde a mim todos vós que estais cansados e fatigados sob o peso dos vossos fardos, e eu vos darei descanso.” — Mateus 11, 28',
       pageNumber: 1,
     },
     rightPage: {
-      tag: 'Nossa Padroeira',
+      chapter: 'CÂNTICO DA PADROEIRA',
+      verseRef: 'Lc 1, 46-55',
       title: 'Santa Isabel da Hungria',
-      subtitle: 'O Milagre das Rosas e a Caridade Sem Limites',
+      subtitle: 'Rainha humilde, Serva dos pobres e Mãe dos aflitos',
       content: [
-        'Nascida em 1207, Santa Isabel foi rainha e serva de todos. Destinou sua vida, seus bens e seu amor aos mais pobres e enfermos, tornando-se modelo supremo de humildade franciscana e partilha.',
-        'A tradição nos conta que, ao levar pães escondidos aos pobres, foi surpreendida pelo esposo que perguntou o que carregava no regaço. Ao abri-lo, os pães haviam se transformado em perfumadas rosas frescas.',
+        'Princesa da Hungria e Duquesa da Turíngia, Santa Isabel despiu-se da glória terrena para servir a Cristo nos enfermos e necessitados. Fundou hospitais, distribuiu pães e cuidou dos leprosos com ternura de mãe.',
+        'Ao ser interrogada com o regaço repleto de pães para os famintos, revelou diante de todos o milagre celeste: os pães haviam se transformado em frescas e perfumadas rosas de Deus.',
       ],
-      highlight: 'Festa Litúrgica: 17 de Novembro · Padroeira da Caridade e da Família',
+      sacredVerse:
+        '“Tudo o que fizestes a um destes meus irmãos mais pequeninos, a mim o fizestes.” — Mateus 25, 40',
       pageNumber: 2,
     },
   },
-  // Spread 2: Páginas 3 e 4 - A Matriz & Pastorais
+  // 2: Matriz & Pastorais
   {
     id: 2,
-    label: 'A Matriz & Pastorais',
+    label: 'Igreja Matriz & Pastorais',
     leftPage: {
-      tag: 'Nosso Templo Sagrado',
-      title: 'Igreja Matriz & Capela Maranata',
-      subtitle: 'Um Farol de Esperança na Cidade',
+      chapter: 'TEMPLO & ALTAR',
+      verseRef: '1Rs 8, 27-30',
+      title: 'Igreja Matriz e Capela Maranata',
+      subtitle: 'Lugar de Adoração Perpétua e Reconciliação',
       image: igrejaImg,
-      imageCaption: 'Fachada histórica da Igreja Matriz na Rua Elias Gannam, Casa Verde',
+      imageCaption: 'A Matriz na Rua Elias Gannam — Casa Verde, SP',
       content: [
-        'Localizada na Rua Elias Gannam, a Igreja Matriz acolhe fiéis de toda a região paulistana com sua nave acolhedora e atmosfera serena de silêncio e adoração.',
-        'Junto à Capela Maranata, formamos uma rede unida de irmãos dedicados à oração contínua e aos sacramentos.',
+        'Na nave sagrada da Matriz, o Sacrário ilumina os passos de nossa comunidade. As portas abertas acolhem o romeiro, o paroquiano e todo aquele que busca a bênção de Deus nas missas dominicais e semanais.',
       ],
+      sacredVerse:
+        '“Este lugar não é outro senão a casa de Deus e a porta do céu!” — Gênesis 28, 17',
       pageNumber: 3,
     },
     rightPage: {
-      tag: 'Comunhão & Missão',
-      title: 'Vida Pastoral Ativa',
-      subtitle: 'Muitos Dons, Um Só Espírito',
+      chapter: 'ATOS DOS APÓSTOLOS',
+      verseRef: 'At 2, 42-47',
+      title: 'Comunhão & Pastorais',
+      subtitle: 'Perseverantes na Doutrina e na Fração do Pão',
       image: fellowshipImg,
-      imageCaption: 'Encontros de partilha, cafés fraternos e serviço social comunitário',
+      imageCaption: 'O serviço alegre dos ministérios e pastorais paroquiais',
       content: [
-        'A paróquia pulsa através do trabalho voluntário de dezenas de paroquianos organizados em ministérios: Liturgia, Música, Acolhimento, Catequese, Ação Social e Dízimo.',
-        'Nosso compromisso não termina na porta da igreja: estende-se às famílias necessitadas e a quem busca consolo espiritual.',
+        'Como nas primeiras comunidades cristãs, os paroquianos unem-se em ministérios de amor: Liturgia, Música, Acolhida, Catequese, Ação Social e Dízimo.',
+        'A fé se traduz em gestos concretos de acolhimento às famílias e solidariedade aos irmãos em vulnerabilidade.',
       ],
+      sacredVerse:
+        '“Eram assíduos ao ensinamento dos apóstolos, à comunhão fraterna e às orações.” — Atos 2, 42',
       pageNumber: 4,
     },
   },
-  // Spread 3: Páginas 5 e 6 - Juventude & Oração
+  // 3: Juventude & Oração
   {
     id: 3,
-    label: 'Juventude & Oração',
+    label: 'Juventude & Bênção Final',
     leftPage: {
-      tag: 'Nova Geração',
+      chapter: 'NOVA EVANGELIZAÇÃO',
+      verseRef: '1Tm 4, 12',
       title: 'Juventude Carlo Acutis',
-      subtitle: 'A Eucaristia como Autoestrada para o Céu',
+      subtitle: 'Santos de Calça Jeans e Adoradores em Espírito',
       image: worshipImg,
-      imageCaption: 'Noites de louvor, vigílias e retiros espirituais da juventude',
+      imageCaption: 'Vigílias, louvor e adoração da Juventude Paroquial',
       content: [
-        'Inspirados pelo Beato Carlo Acutis, os jovens da paróquia unem tecnologia, oração, carisma e entusiasmo para testemunhar o Evangelho no mundo contemporâneo.',
-        'Com noites de louvor, grupos de partilha e adoração ao Santíssimo Sacramento, a juventude é o coração vibrante do presente e do futuro da nossa comunidade.',
+        'Guiados pelo exemplo do jovem Beato Carlo Acutis, nossa juventude proclama que a santidade é um chamado para o hoje.',
+        'Com noites de vigília, louvor e serviço alegre, os jovens testemunham a luz do Evangelho no meio das famílias e da cidade.',
       ],
+      sacredVerse:
+        '“A Eucaristia é a minha autoestrada para o Céu. Todos nascem originais, mas muitos morrem como fotocópias.” — Beato Carlo Acutis',
       pageNumber: 5,
     },
     rightPage: {
-      tag: 'Prece Comunitária',
-      title: 'Oração a Santa Isabel',
-      subtitle: 'Rogai por Nossa Paróquia e Famílias',
+      chapter: 'BÊNÇÃO SOLENE',
+      verseRef: 'Nm 6, 24-26',
+      title: 'Oração à Padroeira',
+      subtitle: 'Prece por Todas as Famílias de Nossa Paróquia',
       content: [
-        'Ó gloriosa Santa Isabel, modelo de paciência, amor aos humildes e fidelidade a Cristo, alcançai-nos a graça de um coração misericordioso.',
-        'Abençoai os lares da nossa paróquia, dai paz aos nossos doentes, fortalecei os nossos jovens e transformai as nossas dores em rosas de esperança.',
-        'Por Cristo, nosso Senhor. Amém!',
+        'Ó Santa Isabel, que soubestes unir a realeza ao serviço humilde, ensinai-nos a repartir o pão da esperança e da caridade cristã.',
+        'Abençoai os lares, curai os enfermos, guardai as crianças e jovens de nossa paróquia, e fazei brotar em nossas vidas as rosas da paz e da santidade.',
       ],
-      highlight:
-        '“Não apenas falar de amor, mas estender as mãos a quem mais precisa.”',
+      sacredVerse:
+        '“O Senhor te abençoe e te guarde! O Senhor faça brilhar sobre ti a sua face e te conceda a paz!” — Números 6, 24-26',
       pageNumber: 6,
     },
   },
-  // Spread 4: Contracapa Traseira (Back Cover)
+  // 4: Contracapa Traseira da Bíblia
   {
     id: 4,
     label: 'Contracapa',
@@ -146,10 +155,8 @@ const SPREADS: Spread[] = [
 export function ParishBook() {
   const [currentSpread, setCurrentSpread] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
-  const bookContainerRef = useRef<HTMLDivElement>(null);
-
-  const totalSpreads = SPREADS.length;
-  const spread = SPREADS[currentSpread];
+  const totalSpreads = BIBLE_SPREADS.length;
+  const spread = BIBLE_SPREADS[currentSpread];
 
   function handleNext() {
     if (currentSpread < totalSpreads - 1) {
@@ -163,10 +170,6 @@ export function ParishBook() {
     }
   }
 
-  function toggleFullscreen() {
-    setIsFullscreen((prev) => !prev);
-  }
-
   const isCover = currentSpread === 0;
   const isBackCover = currentSpread === totalSpreads - 1;
   const isOpen = !isCover && !isBackCover;
@@ -174,41 +177,40 @@ export function ParishBook() {
   return (
     <section
       id="livro"
-      className="py-16 sm:py-24 lg:py-28 px-4 sm:px-6 bg-[#F5F5F7] dark:bg-[#0B0B0D] transition-colors relative overflow-hidden"
+      className="py-16 sm:py-24 lg:py-28 px-4 sm:px-6 bg-[#0E0E11] text-[#E8E6E3] relative overflow-hidden"
     >
-      {/* Luz ambiente de fundo */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-[#009E49]/5 dark:bg-[#009E49]/10 rounded-full blur-[120px] pointer-events-none" />
+      {/* Luz ambiente dourada de altar */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[450px] bg-[#C5A059]/10 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="max-w-[1140px] mx-auto relative z-10">
         {/* Cabeçalho da Seção */}
         <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14 space-y-3">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#009E49]/10 text-[#009E49] dark:bg-[#009E49]/20 dark:text-[#30D158] text-[12px] font-semibold tracking-wide uppercase">
-            <BookOpen className="w-3.5 h-3.5" />
-            <span>Memorial Interativo</span>
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#C5A059]/15 border border-[#C5A059]/30 text-[#EED8A1] text-[12px] font-serif tracking-widest uppercase">
+            <Sparkles className="w-3.5 h-3.5 text-[#C5A059]" />
+            <span>Memorial Sagrado</span>
           </div>
 
-          <h2 className="text-[28px] sm:text-[38px] font-bold text-[#1D1D1F] dark:text-white tracking-tight leading-tight">
-            Livro de História & Galeria
+          <h2 className="text-[30px] sm:text-[42px] font-serif font-bold text-[#F8F5EE] tracking-tight leading-tight">
+            Livro Sagrado da Paróquia
           </h2>
 
-          <p className="text-[15px] sm:text-[16px] text-[#6E6E73] dark:text-[#98989D] leading-relaxed">
-            Folheie as páginas do nosso memorial paroquial. Clique nas bordas ou nos botões de navegação para virar as páginas como em um livro físico.
+          <p className="text-[14px] sm:text-[16px] text-[#A6A29A] leading-relaxed font-serif">
+            Folheie a Bíblia Memorial de nossa história, vocações e testemunhos de fé.
           </p>
         </div>
 
-        {/* Livro e Moldura */}
+        {/* CONTAINER DO LIVRO / BÍBLIA */}
         <div
-          ref={bookContainerRef}
           className={`relative mx-auto transition-all duration-300 ${
             isFullscreen
               ? 'fixed inset-0 z-[100] bg-black/95 p-4 sm:p-10 flex flex-col items-center justify-center'
-              : 'w-full max-w-[960px]'
+              : 'w-full max-w-[980px]'
           }`}
         >
           {isFullscreen && (
             <button
               type="button"
-              onClick={toggleFullscreen}
+              onClick={() => setIsFullscreen(false)}
               className="absolute top-6 right-6 z-[110] px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 text-white text-[13px] font-medium backdrop-blur-md transition-colors cursor-pointer flex items-center gap-2"
             >
               <Minimize2 className="w-4 h-4" />
@@ -216,217 +218,246 @@ export function ParishBook() {
             </button>
           )}
 
-          {/* O LIVRO 3D */}
-          <div className="relative w-full aspect-[4/3] sm:aspect-[16/10] max-h-[580px] perspective-[2200px] select-none">
-            {/* Sombra da mesa/superfície do livro */}
-            <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-[92%] h-8 bg-black/25 dark:bg-black/60 rounded-full blur-xl pointer-events-none" />
+          {/* ESTRUTURA DO LIVRO 3D */}
+          <div className="relative w-full aspect-[4/3] sm:aspect-[16/10] max-h-[620px] select-none">
+            {/* Sombra realista na mesa */}
+            <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 w-[94%] h-10 bg-black/70 rounded-full blur-2xl pointer-events-none" />
+
+            {/* Espessura dourada das folhas nas bordas (Laterais douradas da Bíblia) */}
+            <div className="absolute -right-2 top-2 bottom-2 w-3 bg-gradient-to-r from-[#8B6B2B] via-[#EED8A1] to-[#8B6B2B] rounded-r-md shadow-md pointer-events-none opacity-85" />
+            <div className="absolute -bottom-2 left-3 right-3 h-3 bg-gradient-to-b from-[#8B6B2B] via-[#EED8A1] to-[#684F1D] rounded-b-md shadow-md pointer-events-none opacity-85" />
+
+            {/* Fita Marcador de Página Vermelha (Ribbon) descendo da bíblia */}
+            <div className="absolute top-0 right-14 w-5 h-36 bg-gradient-to-b from-[#9E1B1B] via-[#BD2424] to-[#731212] rounded-b-sm shadow-xl z-30 pointer-events-none border-x border-[#BD2424]/40" />
 
             <AnimatePresence mode="wait">
-              {/* 1. CAPA FRONTAL (CLOSED FRONT COVER) */}
+              {/* ======================================================== */}
+              {/* 1. CAPA DA BÍBLIA SAGRADA (COURO PRETO / DOURADO EM RELEVO) */}
+              {/* ======================================================== */}
               {isCover && (
                 <motion.div
-                  key="front-cover"
+                  key="bible-cover"
                   initial={{ opacity: 0, rotateY: -30, scale: 0.95 }}
                   animate={{ opacity: 1, rotateY: 0, scale: 1 }}
                   exit={{ opacity: 0, rotateY: -90, scale: 0.92 }}
-                  transition={{ duration: 0.55, ease: [0.25, 1, 0.5, 1] }}
+                  transition={{ duration: 0.6, ease: [0.25, 1, 0.5, 1] }}
                   onClick={handleNext}
-                  className="w-full h-full rounded-[18px] sm:rounded-[22px] bg-gradient-to-br from-[#0c3822] via-[#092b1a] to-[#04160d] text-white shadow-2xl p-6 sm:p-12 flex flex-col items-center justify-between text-center border-4 border-[#C5A059]/40 relative overflow-hidden cursor-pointer group"
+                  className="w-full h-full rounded-[18px] sm:rounded-[24px] bg-[#141210] text-[#EED8A1] shadow-[inset_0_0_80px_rgba(0,0,0,0.9),0_20px_50px_rgba(0,0,0,0.8)] p-6 sm:p-12 flex flex-col items-center justify-between text-center border-4 border-[#3D342A] relative overflow-hidden cursor-pointer group"
+                  style={{
+                    backgroundImage: `radial-gradient(circle at 50% 50%, rgba(45, 38, 30, 0.5) 0%, rgba(12, 11, 10, 0.95) 100%)`,
+                  }}
                 >
-                  {/* Textura de couro e vinco dourado */}
-                  <div className="absolute inset-3 border-2 border-[#C5A059]/30 rounded-[14px] pointer-events-none" />
-                  <div className="absolute inset-5 border border-[#C5A059]/20 rounded-[10px] pointer-events-none" />
+                  {/* Moldura clássica em baixo-relevo dourado da Bíblia */}
+                  <div className="absolute inset-3 border-2 border-[#C5A059]/40 rounded-[16px] pointer-events-none shadow-[inset_0_0_15px_rgba(197,160,89,0.15)]" />
+                  <div className="absolute inset-5 border border-[#C5A059]/20 rounded-[12px] pointer-events-none" />
 
-                  {/* Detalhes de cantoneiras douradas */}
-                  <div className="absolute top-4 left-4 w-6 h-6 border-t-2 border-l-2 border-[#C5A059]" />
-                  <div className="absolute top-4 right-4 w-6 h-6 border-t-2 border-r-2 border-[#C5A059]" />
-                  <div className="absolute bottom-4 left-4 w-6 h-6 border-b-2 border-l-2 border-[#C5A059]" />
-                  <div className="absolute bottom-4 right-4 w-6 h-6 border-b-2 border-r-2 border-[#C5A059]" />
+                  {/* Cantoneiras douradas barrocas */}
+                  <div className="absolute top-4 left-4 w-8 h-8 border-t-2 border-l-2 border-[#C5A059] opacity-80" />
+                  <div className="absolute top-4 right-4 w-8 h-8 border-t-2 border-r-2 border-[#C5A059] opacity-80" />
+                  <div className="absolute bottom-4 left-4 w-8 h-8 border-b-2 border-l-2 border-[#C5A059] opacity-80" />
+                  <div className="absolute bottom-4 right-4 w-8 h-8 border-b-2 border-r-2 border-[#C5A059] opacity-80" />
 
-                  {/* Fitilho marcador de páginas */}
-                  <div className="absolute top-0 right-16 w-4 h-24 bg-gradient-to-b from-[#8B1E1E] to-[#601212] shadow-md rounded-b-sm border-x border-[#A32828]" />
+                  {/* Lombada clássica (Vinco da costura do couro à esquerda) */}
+                  <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-black/80 via-[#262017]/40 to-transparent pointer-events-none border-r border-[#C5A059]/20" />
 
-                  {/* Cabeçalho da capa */}
-                  <div className="pt-4 space-y-1">
-                    <p className="text-[11px] sm:text-[13px] uppercase tracking-[0.25em] text-[#C5A059] font-medium">
+                  {/* Topo da capa */}
+                  <div className="pt-4 space-y-1 relative z-10">
+                    <p className="text-[11px] sm:text-[13px] uppercase tracking-[0.35em] text-[#C5A059] font-serif font-semibold">
                       Paróquia Rainha Santa Isabel
                     </p>
-                    <p className="text-[10px] sm:text-[11px] tracking-wider text-white/50 uppercase">
-                      Casa Verde · São Paulo — SP
+                    <p className="text-[10px] sm:text-[11px] tracking-widest text-[#A69986] uppercase font-serif">
+                      Diocese de Santana · Casa Verde, São Paulo
                     </p>
                   </div>
 
-                  {/* Brasão central dourado */}
-                  <div className="relative my-auto flex flex-col items-center">
-                    <div className="w-24 h-24 sm:w-36 sm:h-36 rounded-full bg-gradient-to-b from-[#C5A059]/20 to-transparent p-3 sm:p-4 border border-[#C5A059]/40 flex items-center justify-center shadow-inner group-hover:scale-105 transition-transform duration-500">
-                      <img
-                        src={parishLogo}
-                        alt="Brasão Paroquial"
-                        className="w-full h-full object-contain filter drop-shadow-[0_4px_12px_rgba(197,160,89,0.4)]"
-                      />
+                  {/* Cruz Dourada em Relevo e Título da Bíblia */}
+                  <div className="relative my-auto flex flex-col items-center z-10">
+                    {/* Cruz Latina Dourada ornamental */}
+                    <div className="w-16 h-24 sm:w-20 sm:h-28 flex flex-col items-center justify-center relative mb-4 group-hover:scale-105 transition-transform duration-500">
+                      <div className="w-3.5 sm:w-4 h-full bg-gradient-to-b from-[#FFF2B2] via-[#C5A059] to-[#846326] rounded-xs shadow-[0_0_20px_rgba(197,160,89,0.5)]" />
+                      <div className="absolute top-5 sm:top-6 w-14 sm:w-18 h-3.5 sm:h-4 bg-gradient-to-r from-[#FFF2B2] via-[#C5A059] to-[#846326] rounded-xs shadow-[0_0_20px_rgba(197,160,89,0.5)]" />
                     </div>
 
-                    <h3 className="mt-5 text-[22px] sm:text-[34px] font-serif font-bold text-[#EED8A1] tracking-wide filter drop-shadow-sm">
-                      MEMORIAL & HISTÓRIA
+                    <h3 className="text-[26px] sm:text-[40px] font-serif font-bold text-transparent bg-clip-text bg-gradient-to-b from-[#FFF5D0] via-[#EED8A1] to-[#C5A059] tracking-[0.18em] filter drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]">
+                      BÍBLIA MEMORIAL
                     </h3>
-                    <p className="mt-1 text-[12px] sm:text-[14px] text-white/80 max-w-md italic">
-                      “Uma comunidade de fé, oração e acolhimento.”
+
+                    <p className="mt-2 text-[12px] sm:text-[14px] text-[#D8CEBA] font-serif italic max-w-md">
+                      “Lâmpada para os meus passos é a tua palavra e luz no meu caminho.”
+                      <span className="block not-italic text-[11px] text-[#C5A059] mt-0.5 tracking-wider font-semibold">
+                        SALMO 119, 105
+                      </span>
                     </p>
                   </div>
 
                   {/* Toque para abrir */}
-                  <div className="pb-2">
-                    <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#C5A059]/20 border border-[#C5A059]/40 text-[#EED8A1] text-[12px] sm:text-[13px] font-medium tracking-wide group-hover:bg-[#C5A059]/30 transition-colors">
+                  <div className="pb-2 relative z-10">
+                    <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#C5A059]/15 border border-[#C5A059]/40 text-[#EED8A1] text-[12px] sm:text-[13px] font-serif tracking-widest group-hover:bg-[#C5A059]/30 transition-colors shadow-lg">
                       <Sparkles className="w-3.5 h-3.5 text-[#C5A059]" />
-                      <span>Clique na capa para abrir o livro</span>
+                      <span>TOQUE PARA ABRIR A BÍBLIA</span>
                       <ChevronRight className="w-4 h-4 text-[#C5A059]" />
                     </span>
                   </div>
                 </motion.div>
               )}
 
-              {/* 2. PÁGINAS ABERTAS (DOUBLE-PAGE SPREAD) */}
+              {/* ======================================================== */}
+              {/* 2. PÁGINAS ABERTAS EM ESTILO BÍBLIA SAGRADA (COLUNAS & CAPÍTULOS) */}
+              {/* ======================================================== */}
               {isOpen && (
                 <motion.div
                   key={`spread-${currentSpread}`}
                   initial={{ opacity: 0, scale: 0.98 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.98 }}
-                  transition={{ duration: 0.35, ease: 'easeOut' }}
-                  className="w-full h-full rounded-[16px] sm:rounded-[20px] bg-[#FAF8F3] dark:bg-[#151518] border border-black/10 dark:border-white/10 shadow-2xl flex flex-col sm:flex-row overflow-hidden relative"
+                  transition={{ duration: 0.4, ease: 'easeOut' }}
+                  className="w-full h-full rounded-[16px] sm:rounded-[22px] bg-[#F7F3E9] text-[#24211D] border-4 border-[#2D261E] shadow-[inset_0_0_40px_rgba(0,0,0,0.1),0_25px_60px_rgba(0,0,0,0.8)] flex flex-col sm:flex-row overflow-hidden relative font-serif"
                 >
-                  {/* Dobra/Costura central do livro (Spine fold shadow) */}
-                  <div className="hidden sm:block absolute left-1/2 top-0 bottom-0 w-8 -translate-x-1/2 bg-gradient-to-r from-black/10 via-black/25 to-black/10 pointer-events-none z-20" />
-                  <div className="hidden sm:block absolute left-1/2 top-0 bottom-0 w-[1px] bg-black/30 dark:bg-white/20 z-20" />
+                  {/* Vinco central profundo da Bíblia (Encadernação costurada) */}
+                  <div className="hidden sm:block absolute left-1/2 top-0 bottom-0 w-12 -translate-x-1/2 bg-gradient-to-r from-black/15 via-black/40 to-black/15 pointer-events-none z-20" />
+                  <div className="hidden sm:block absolute left-1/2 top-0 bottom-0 w-[1px] bg-black/45 z-20" />
 
-                  {/* PÁGINA ESQUERDA */}
+                  {/* Bordas envelhecidas do papel bíblia */}
+                  <div className="absolute inset-0 shadow-[inset_0_0_35px_rgba(150,130,90,0.25)] pointer-events-none z-10" />
+
+                  {/* PÁGINA ESQUERDA DA BÍBLIA */}
                   <div
                     onClick={handlePrev}
                     title="Clique para voltar a página"
-                    className="w-full sm:w-1/2 h-1/2 sm:h-full p-4 sm:p-8 md:p-10 flex flex-col justify-between border-b sm:border-b-0 sm:border-r border-black/[0.06] dark:border-white/[0.08] relative cursor-pointer hover:bg-black/[0.01] dark:hover:bg-white/[0.01] transition-colors overflow-y-auto"
+                    className="w-full sm:w-1/2 h-1/2 sm:h-full p-4 sm:p-7 md:p-9 flex flex-col justify-between border-b sm:border-b-0 sm:border-r border-[#D9D0BE] relative cursor-pointer hover:bg-black/[0.015] transition-colors overflow-y-auto"
                   >
                     {spread.leftPage && (
-                      <div className="space-y-3 sm:space-y-4">
-                        <div className="flex items-center justify-between">
-                          <span className="text-[11px] uppercase tracking-wider font-semibold text-[#009E49] dark:text-[#30D158]">
-                            {spread.leftPage.tag}
-                          </span>
-                          <span className="text-[11px] text-[#86868B]">
-                            {spread.leftPage.pageNumber ? `Pág. ${spread.leftPage.pageNumber}` : ''}
-                          </span>
+                      <div className="space-y-3">
+                        {/* Cabeçalho Litúrgico da Página */}
+                        <div className="flex items-center justify-between pb-1.5 border-b border-[#C8BEAA] text-[11px] text-[#6E6455] tracking-widest uppercase">
+                          <span>{spread.leftPage.chapter}</span>
+                          <span className="font-bold text-[#8C2323]">{spread.leftPage.verseRef}</span>
                         </div>
 
                         <div>
-                          <h4 className="text-[18px] sm:text-[22px] font-bold font-serif text-[#1D1D1F] dark:text-white leading-tight">
+                          <h4 className="text-[19px] sm:text-[23px] font-bold text-[#1F1C18] leading-tight">
                             {spread.leftPage.title}
                           </h4>
                           {spread.leftPage.subtitle && (
-                            <p className="text-[12px] sm:text-[13px] text-[#6E6E73] dark:text-[#98989D] mt-0.5">
+                            <p className="text-[12px] sm:text-[13px] text-[#6E6455] italic mt-0.5">
                               {spread.leftPage.subtitle}
                             </p>
                           )}
                         </div>
 
                         {spread.leftPage.image && (
-                          <div className="rounded-xl overflow-hidden border border-black/10 dark:border-white/10 shadow-sm max-h-36 sm:max-h-44">
+                          <div className="rounded-lg overflow-hidden border border-[#C8BEAA] shadow-sm max-h-32 sm:max-h-40">
                             <img
                               src={spread.leftPage.image}
                               alt={spread.leftPage.title}
-                              className="w-full h-full object-cover"
+                              className="w-full h-full object-cover sepia-[0.15]"
                             />
                             {spread.leftPage.imageCaption && (
-                              <p className="p-1.5 text-[10.5px] text-center text-[#6E6E73] bg-[#EFECE6] dark:bg-[#1F1F22] italic">
+                              <p className="p-1 text-[10.5px] text-center text-[#554E44] bg-[#EFE9DC] italic border-t border-[#D9D0BE]">
                                 {spread.leftPage.imageCaption}
                               </p>
                             )}
                           </div>
                         )}
 
-                        <div className="space-y-2 text-[12.5px] sm:text-[13.5px] text-[#2C2C2E] dark:text-[#D1D1D6] leading-relaxed">
+                        {/* Texto com letra capitular estilizada */}
+                        <div className="space-y-2 text-[12px] sm:text-[13px] text-[#332E27] leading-relaxed text-justify">
                           {spread.leftPage.content.map((p, idx) => (
-                            <p key={idx}>{p}</p>
+                            <p key={idx}>
+                              {idx === 0 ? (
+                                <span className="float-left text-[38px] sm:text-[44px] font-bold text-[#8C2323] leading-none pr-2 pt-1 font-serif">
+                                  {p.charAt(0)}
+                                </span>
+                              ) : null}
+                              {idx === 0 ? p.slice(1) : p}
+                            </p>
                           ))}
                         </div>
 
-                        {spread.leftPage.highlight && (
-                          <div className="p-3 rounded-xl bg-[#009E49]/10 border-l-3 border-[#009E49] text-[12px] italic text-[#1D1D1F] dark:text-white">
-                            {spread.leftPage.highlight}
+                        {/* Versículo de Destaque */}
+                        {spread.leftPage.sacredVerse && (
+                          <div className="p-3 rounded-lg bg-[#EFE9DC] border-l-3 border-[#8C2323] text-[11.5px] italic text-[#4A433A] shadow-xs">
+                            {spread.leftPage.sacredVerse}
                           </div>
                         )}
                       </div>
                     )}
 
-                    {/* Dica no rodapé da página esquerda */}
-                    <div className="pt-2 flex items-center justify-between text-[11px] text-[#86868B]">
-                      <span className="inline-flex items-center gap-1 hover:text-[#1D1D1F] dark:hover:text-white">
+                    <div className="pt-2 flex items-center justify-between text-[11px] text-[#7A7061] border-t border-[#D9D0BE]/70">
+                      <span className="inline-flex items-center gap-1 hover:text-[#1F1C18]">
                         <ChevronLeft className="w-3.5 h-3.5" />
                         <span>Voltar</span>
                       </span>
-                      <span>— {spread.leftPage?.pageNumber} —</span>
+                      <span className="font-semibold">— {spread.leftPage?.pageNumber} —</span>
                     </div>
                   </div>
 
-                  {/* PÁGINA DIREITA */}
+                  {/* PÁGINA DIREITA DA BÍBLIA */}
                   <div
                     onClick={handleNext}
                     title="Clique para avançar a página"
-                    className="w-full sm:w-1/2 h-1/2 sm:h-full p-4 sm:p-8 md:p-10 flex flex-col justify-between relative cursor-pointer hover:bg-black/[0.01] dark:hover:bg-white/[0.01] transition-colors overflow-y-auto"
+                    className="w-full sm:w-1/2 h-1/2 sm:h-full p-4 sm:p-7 md:p-9 flex flex-col justify-between relative cursor-pointer hover:bg-black/[0.015] transition-colors overflow-y-auto"
                   >
                     {spread.rightPage && (
-                      <div className="space-y-3 sm:space-y-4">
-                        <div className="flex items-center justify-between">
-                          <span className="text-[11px] uppercase tracking-wider font-semibold text-[#009E49] dark:text-[#30D158]">
-                            {spread.rightPage.tag}
-                          </span>
-                          <span className="text-[11px] text-[#86868B]">
-                            {spread.rightPage.pageNumber ? `Pág. ${spread.rightPage.pageNumber}` : ''}
-                          </span>
+                      <div className="space-y-3">
+                        {/* Cabeçalho Litúrgico da Página */}
+                        <div className="flex items-center justify-between pb-1.5 border-b border-[#C8BEAA] text-[11px] text-[#6E6455] tracking-widest uppercase">
+                          <span className="font-bold text-[#8C2323]">{spread.rightPage.verseRef}</span>
+                          <span>{spread.rightPage.chapter}</span>
                         </div>
 
                         <div>
-                          <h4 className="text-[18px] sm:text-[22px] font-bold font-serif text-[#1D1D1F] dark:text-white leading-tight">
+                          <h4 className="text-[19px] sm:text-[23px] font-bold text-[#1F1C18] leading-tight">
                             {spread.rightPage.title}
                           </h4>
                           {spread.rightPage.subtitle && (
-                            <p className="text-[12px] sm:text-[13px] text-[#6E6E73] dark:text-[#98989D] mt-0.5">
+                            <p className="text-[12px] sm:text-[13px] text-[#6E6455] italic mt-0.5">
                               {spread.rightPage.subtitle}
                             </p>
                           )}
                         </div>
 
                         {spread.rightPage.image && (
-                          <div className="rounded-xl overflow-hidden border border-black/10 dark:border-white/10 shadow-sm max-h-36 sm:max-h-44">
+                          <div className="rounded-lg overflow-hidden border border-[#C8BEAA] shadow-sm max-h-32 sm:max-h-40">
                             <img
                               src={spread.rightPage.image}
                               alt={spread.rightPage.title}
-                              className="w-full h-full object-cover"
+                              className="w-full h-full object-cover sepia-[0.15]"
                             />
                             {spread.rightPage.imageCaption && (
-                              <p className="p-1.5 text-[10.5px] text-center text-[#6E6E73] bg-[#EFECE6] dark:bg-[#1F1F22] italic">
+                              <p className="p-1 text-[10.5px] text-center text-[#554E44] bg-[#EFE9DC] italic border-t border-[#D9D0BE]">
                                 {spread.rightPage.imageCaption}
                               </p>
                             )}
                           </div>
                         )}
 
-                        <div className="space-y-2 text-[12.5px] sm:text-[13.5px] text-[#2C2C2E] dark:text-[#D1D1D6] leading-relaxed">
+                        {/* Texto com letra capitular */}
+                        <div className="space-y-2 text-[12px] sm:text-[13px] text-[#332E27] leading-relaxed text-justify">
                           {spread.rightPage.content.map((p, idx) => (
-                            <p key={idx}>{p}</p>
+                            <p key={idx}>
+                              {idx === 0 ? (
+                                <span className="float-left text-[38px] sm:text-[44px] font-bold text-[#8C2323] leading-none pr-2 pt-1 font-serif">
+                                  {p.charAt(0)}
+                                </span>
+                              ) : null}
+                              {idx === 0 ? p.slice(1) : p}
+                            </p>
                           ))}
                         </div>
 
-                        {spread.rightPage.highlight && (
-                          <div className="p-3 rounded-xl bg-[#009E49]/10 border-l-3 border-[#009E49] text-[12px] italic text-[#1D1D1F] dark:text-white">
-                            {spread.rightPage.highlight}
+                        {/* Versículo de Destaque */}
+                        {spread.rightPage.sacredVerse && (
+                          <div className="p-3 rounded-lg bg-[#EFE9DC] border-l-3 border-[#8C2323] text-[11.5px] italic text-[#4A433A] shadow-xs">
+                            {spread.rightPage.sacredVerse}
                           </div>
                         )}
                       </div>
                     )}
 
-                    {/* Dica no rodapé da página direita */}
-                    <div className="pt-2 flex items-center justify-between text-[11px] text-[#86868B]">
-                      <span>— {spread.rightPage?.pageNumber} —</span>
-                      <span className="inline-flex items-center gap-1 hover:text-[#1D1D1F] dark:hover:text-white">
+                    <div className="pt-2 flex items-center justify-between text-[11px] text-[#7A7061] border-t border-[#D9D0BE]/70">
+                      <span className="font-semibold">— {spread.rightPage?.pageNumber} —</span>
+                      <span className="inline-flex items-center gap-1 hover:text-[#1F1C18]">
                         <span>Avançar</span>
                         <ChevronRight className="w-3.5 h-3.5" />
                       </span>
@@ -435,48 +466,55 @@ export function ParishBook() {
                 </motion.div>
               )}
 
-              {/* 3. CONTRACAPA DURA (BACK COVER) */}
+              {/* ======================================================== */}
+              {/* 3. CONTRACAPA TRASEIRA DA BÍBLIA (COURO ESCURO COM CRUZ) */}
+              {/* ======================================================== */}
               {isBackCover && (
                 <motion.div
-                  key="back-cover"
+                  key="bible-back-cover"
                   initial={{ opacity: 0, rotateY: 30, scale: 0.95 }}
                   animate={{ opacity: 1, rotateY: 0, scale: 1 }}
                   exit={{ opacity: 0, rotateY: 90, scale: 0.92 }}
-                  transition={{ duration: 0.55, ease: [0.25, 1, 0.5, 1] }}
+                  transition={{ duration: 0.6, ease: [0.25, 1, 0.5, 1] }}
                   onClick={() => setCurrentSpread(0)}
-                  className="w-full h-full rounded-[18px] sm:rounded-[22px] bg-gradient-to-br from-[#0c3822] via-[#092b1a] to-[#04160d] text-white shadow-2xl p-6 sm:p-12 flex flex-col items-center justify-between text-center border-4 border-[#C5A059]/40 relative overflow-hidden cursor-pointer group"
+                  className="w-full h-full rounded-[18px] sm:rounded-[24px] bg-[#141210] text-[#EED8A1] shadow-[inset_0_0_80px_rgba(0,0,0,0.9),0_20px_50px_rgba(0,0,0,0.8)] p-6 sm:p-12 flex flex-col items-center justify-between text-center border-4 border-[#3D342A] relative overflow-hidden cursor-pointer group font-serif"
+                  style={{
+                    backgroundImage: `radial-gradient(circle at 50% 50%, rgba(45, 38, 30, 0.5) 0%, rgba(12, 11, 10, 0.95) 100%)`,
+                  }}
                 >
-                  <div className="absolute inset-3 border-2 border-[#C5A059]/30 rounded-[14px] pointer-events-none" />
-                  <div className="absolute top-4 left-4 w-6 h-6 border-t-2 border-l-2 border-[#C5A059]" />
-                  <div className="absolute top-4 right-4 w-6 h-6 border-t-2 border-r-2 border-[#C5A059]" />
-                  <div className="absolute bottom-4 left-4 w-6 h-6 border-b-2 border-l-2 border-[#C5A059]" />
-                  <div className="absolute bottom-4 right-4 w-6 h-6 border-b-2 border-r-2 border-[#C5A059]" />
+                  <div className="absolute inset-3 border-2 border-[#C5A059]/40 rounded-[16px] pointer-events-none" />
+                  <div className="absolute top-4 left-4 w-8 h-8 border-t-2 border-l-2 border-[#C5A059] opacity-80" />
+                  <div className="absolute top-4 right-4 w-8 h-8 border-t-2 border-r-2 border-[#C5A059] opacity-80" />
+                  <div className="absolute bottom-4 left-4 w-8 h-8 border-b-2 border-l-2 border-[#C5A059] opacity-80" />
+                  <div className="absolute bottom-4 right-4 w-8 h-8 border-b-2 border-r-2 border-[#C5A059] opacity-80" />
 
                   <div className="pt-4">
-                    <p className="text-[12px] uppercase tracking-[0.2em] text-[#C5A059]">
-                      Paróquia Rainha Santa Isabel
+                    <p className="text-[12px] uppercase tracking-[0.3em] text-[#C5A059]">
+                      Amém · Louvado Seja Nosso Senhor Jesus Cristo
                     </p>
                   </div>
 
                   <div className="my-auto max-w-md space-y-4">
-                    <div className="w-16 h-16 mx-auto rounded-full bg-[#C5A059]/20 border border-[#C5A059]/40 flex items-center justify-center p-3">
+                    <div className="w-16 h-16 mx-auto rounded-full bg-[#C5A059]/15 border border-[#C5A059]/40 flex items-center justify-center p-3 shadow-lg">
                       <img
                         src={parishLogo}
                         alt="Brasão"
-                        className="w-full h-full object-contain filter drop-shadow-[0_2px_8px_rgba(197,160,89,0.3)]"
+                        className="w-full h-full object-contain filter drop-shadow-[0_2px_8px_rgba(197,160,89,0.4)]"
                       />
                     </div>
-                    <p className="text-[14px] sm:text-[15px] italic text-[#EED8A1] leading-relaxed">
-                      “Que o testemunho de Santa Isabel inspire cada fiel da nossa paróquia a construir um mundo mais justo, fraterno e cheio de amor.”
+
+                    <p className="text-[15px] sm:text-[17px] italic text-[#F4E6C3] leading-relaxed">
+                      “Para sempre seja louvado o nome de Jesus e de Sua Santa Mãe e Padroeira Rainha Santa Isabel.”
                     </p>
-                    <p className="text-[11px] tracking-wider text-white/60 uppercase">
-                      Rua Elias Gannam, 331 · Casa Verde, São Paulo
+
+                    <p className="text-[11px] tracking-widest text-[#A69986] uppercase font-sans">
+                      Rua Elias Gannam, 331 · Casa Verde, São Paulo — SP
                     </p>
                   </div>
 
                   <div className="pb-2">
-                    <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#C5A059]/20 border border-[#C5A059]/40 text-[#EED8A1] text-[12px] font-medium tracking-wide group-hover:bg-[#C5A059]/30 transition-colors">
-                      <span>Voltar ao início do livro</span>
+                    <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#C5A059]/15 border border-[#C5A059]/40 text-[#EED8A1] text-[12px] tracking-widest group-hover:bg-[#C5A059]/30 transition-colors">
+                      <span>FECHAR E VOLTAR À CAPA</span>
                     </span>
                   </div>
                 </motion.div>
@@ -484,36 +522,36 @@ export function ParishBook() {
             </AnimatePresence>
           </div>
 
-          {/* BARRA DE CONTROLE E NAVEGAÇÃO DO LIVRO */}
-          <div className="mt-6 flex flex-wrap items-center justify-between gap-3 px-2">
+          {/* BARRA DE CONTROLE DA BÍBLIA */}
+          <div className="mt-8 flex flex-wrap items-center justify-between gap-3 px-2 font-serif">
             {/* Botão Anterior */}
             <button
               type="button"
               disabled={currentSpread === 0}
               onClick={handlePrev}
-              aria-label="Voltar página"
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white dark:bg-[#1C1C1E] border border-black/10 dark:border-white/10 text-[13px] font-medium text-[#1D1D1F] dark:text-white shadow-sm hover:bg-[#F5F5F7] dark:hover:bg-[#2C2C2E] disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer transition-all"
+              aria-label="Página anterior"
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#1C1A17] border border-[#C5A059]/30 text-[13px] text-[#EED8A1] hover:bg-[#2A2621] disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer transition-all shadow-md"
             >
-              <ChevronLeft className="w-4 h-4" />
-              <span>Anterior</span>
+              <ChevronLeft className="w-4 h-4 text-[#C5A059]" />
+              <span>Página Anterior</span>
             </button>
 
-            {/* Marcadores / Seletor de Capítulos */}
-            <div className="flex items-center gap-1.5">
-              {SPREADS.map((s, idx) => (
+            {/* Marcadores de Capítulos */}
+            <div className="flex items-center gap-2">
+              {BIBLE_SPREADS.map((s, idx) => (
                 <button
                   key={s.id}
                   type="button"
                   onClick={() => setCurrentSpread(idx)}
-                  className={`h-2 rounded-full transition-all cursor-pointer ${
+                  className={`h-2.5 rounded-full transition-all cursor-pointer ${
                     currentSpread === idx
-                      ? 'w-7 bg-[#009E49] dark:bg-[#30D158]'
-                      : 'w-2 bg-black/20 dark:bg-white/20 hover:bg-black/40'
+                      ? 'w-8 bg-[#C5A059] shadow-[0_0_10px_rgba(197,160,89,0.7)]'
+                      : 'w-2.5 bg-[#4A4033] hover:bg-[#736450]'
                   }`}
                   title={s.label}
                 />
               ))}
-              <span className="ml-2 text-[12px] font-medium text-[#6E6E73] dark:text-[#98989D]">
+              <span className="ml-2 text-[12px] text-[#C5A059] tracking-wider uppercase font-sans font-semibold">
                 {currentSpread === 0
                   ? 'Capa'
                   : currentSpread === totalSpreads - 1
@@ -526,10 +564,10 @@ export function ParishBook() {
             <div className="flex items-center gap-2">
               <button
                 type="button"
-                onClick={toggleFullscreen}
+                onClick={() => setIsFullscreen((prev) => !prev)}
                 aria-label="Alternar tela cheia"
-                className="hidden sm:inline-flex items-center justify-center w-9 h-9 rounded-full bg-white dark:bg-[#1C1C1E] border border-black/10 dark:border-white/10 text-[#1D1D1F] dark:text-white shadow-sm hover:bg-[#F5F5F7] dark:hover:bg-[#2C2C2E] transition-all cursor-pointer"
-                title={isFullscreen ? 'Sair da tela cheia' : 'Modo de leitura em tela cheia'}
+                className="hidden sm:inline-flex items-center justify-center w-9 h-9 rounded-full bg-[#1C1A17] border border-[#C5A059]/30 text-[#EED8A1] hover:bg-[#2A2621] transition-all cursor-pointer shadow-md"
+                title="Modo de leitura imersiva"
               >
                 {isFullscreen ? <Minimize2 className="w-4 h-4" /> : <Maximize2 className="w-4 h-4" />}
               </button>
@@ -538,10 +576,10 @@ export function ParishBook() {
                 type="button"
                 disabled={currentSpread === totalSpreads - 1}
                 onClick={handleNext}
-                aria-label="Avançar página"
-                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#1D1D1F] text-white hover:bg-black dark:bg-white dark:text-[#1D1D1F] dark:hover:bg-[#F2F2F7] text-[13px] font-medium shadow-sm disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer transition-all"
+                aria-label="Próxima página"
+                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-gradient-to-r from-[#C5A059] to-[#9E7B34] text-black font-semibold text-[13px] hover:brightness-110 shadow-lg disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer transition-all"
               >
-                <span>Avançar</span>
+                <span>Próxima Página</span>
                 <ChevronRight className="w-4 h-4" />
               </button>
             </div>
