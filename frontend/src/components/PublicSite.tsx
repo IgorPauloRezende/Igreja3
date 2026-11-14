@@ -40,7 +40,6 @@ import { GlassSurface } from './GlassSurface';
 import { HandsDotMatrixHero } from './HandsDotMatrixHero';
 import { MediaFrame } from './MediaFrame';
 import { ParishEmblem } from './ParishEmblem';
-import { ParishBook } from './ParishBook';
 import { SchedulePopover } from './SchedulePopover';
 
 export interface PublicEvent extends Omit<ChurchEvent, 'rsvps'> {
@@ -166,7 +165,6 @@ const CATECHESIS_PROGRAMS = [
 
 const NAV_ITEMS = [
   { name: 'Paróquia', url: '#a-paroquia' },
-  { name: 'Livro Memorial', url: '#livro' },
   { name: 'Catequese', url: '#catequese' },
   { name: 'Pastorais', url: '#pastorais' },
   { name: 'Juventude', url: '#juventude' },
@@ -968,7 +966,6 @@ export function PublicSite({
                     { href: '#inicio', label: 'Início' },
                     { href: '#missas', label: 'Horários das Missas' },
                     { href: '#a-paroquia', label: 'Conheça Nossa Paróquia' },
-                    { href: '#livro', label: 'Livro Memorial & Galeria' },
                     { href: '#catequese', label: 'Catequese e Formação' },
                     { href: '#pastorais', label: 'Pastorais' },
                     { href: '#juventude', label: 'Juventude' },
@@ -1404,9 +1401,6 @@ export function PublicSite({
             </div>
           </div>
         </section>
-
-        {/* LIVRO MEMORIAL & HISTÓRIA (FLIPBOOK 3D) */}
-        <ParishBook />
 
         {/* 6. CATEQUESE E FORMAÇÃO CRISTÃ */}
         <section id="catequese" className="bg-[#F5F5F7] py-14 sm:py-24 lg:py-28 px-4 sm:px-6">
