@@ -43,10 +43,15 @@ persistente no provedor de hospedagem.
 
 ## GitHub Pages
 
-O GitHub pode exibir os arquivos do projeto, mas o GitHub Pages hospeda somente
-conteúdo estático e não executa o Express. Como as páginas de administração,
-conta e formulários dependem da API, publicar apenas o frontend no Pages não
-oferece o site completo. Para manter esses recursos, hospede o projeto em um
-serviço que execute Node.js; alternativamente, o frontend pode ser publicado no
-Pages se a API for hospedada separadamente e configurada para aceitar chamadas
-do domínio do site.
+O workflow `.github/workflows/pages.yml` compila o frontend e publica
+`frontend/dist` quando há alterações na branch `main`. Para ativar:
+
+1. Abra **Settings → Pages** no repositório.
+2. Em **Build and deployment → Source**, selecione **GitHub Actions**.
+3. Aguarde o workflow terminar em **Actions**. O site ficará em
+   `https://igorp...github.io/Igreja3/`.
+
+O GitHub Pages hospeda somente conteúdo estático; ele não executa o servidor
+Express. Recursos que dependem da API, como administração e formulários, não
+funcionarão no Pages sem hospedar a API em outro serviço e configurar o frontend
+para usá-la.
