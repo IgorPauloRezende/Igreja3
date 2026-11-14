@@ -866,13 +866,13 @@ export function PublicSite({
                     setNotifPopoverOpen(false);
                     setProfilePopoverOpen(false);
                   }}
-                  className={`nav-schedule-link inline-flex items-center justify-center gap-1.5 h-9 sm:h-10 px-2.5 sm:px-4 rounded-full text-[12px] font-medium transition-colors whitespace-nowrap cursor-pointer shadow-sm ${
+                  className={`nav-schedule-link inline-flex items-center justify-center gap-1.5 h-9 sm:h-10 px-2.5 sm:px-4 rounded-full text-[12px] font-medium transition-all whitespace-nowrap cursor-pointer shadow-sm ${
                     schedulePopoverOpen
-                      ? 'bg-[#009E49] text-white hover:bg-[#007E3A]'
-                      : 'bg-[#1D1D1F] text-white hover:bg-black'
+                      ? 'bg-[#1D1D1F] text-white ring-2 ring-[#009E49] dark:bg-white dark:text-[#1D1D1F] dark:ring-[#009E49]'
+                      : 'bg-[#1D1D1F] text-white hover:bg-black dark:bg-white dark:text-[#1D1D1F] dark:hover:bg-[#F2F2F7]'
                   }`}
                 >
-                  <Calendar className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white/90" />
+                  <Calendar className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white dark:text-[#1D1D1F]" />
                   <span className="hidden sm:inline">Horários</span>
                 </motion.button>
 

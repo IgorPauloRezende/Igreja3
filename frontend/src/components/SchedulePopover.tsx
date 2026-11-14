@@ -83,7 +83,7 @@ export function SchedulePopover({
       });
     }
 
-    // Dias do próximo mês para completar a grade de 35 ou 42 dias
+    // Dias do próximo mês para completar a grade
     const remainingDays = (7 - (days.length % 7)) % 7;
     for (let i = 1; i <= remainingDays; i++) {
       const d = new Date(currentYear, currentMonth + 1, i);
@@ -128,12 +128,12 @@ export function SchedulePopover({
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: -6, scale: 0.97 }}
           transition={{ type: 'spring', stiffness: 420, damping: 30 }}
-          className="fixed inset-x-3 top-[74px] sm:inset-x-auto sm:top-full sm:right-0 sm:absolute sm:mt-3 sm:w-[350px] rounded-[24px] bg-white border border-black/[0.08] shadow-2xl p-4 sm:p-5 text-left z-50 origin-top-right overflow-hidden dark:bg-[#1C1C1E] dark:border-white/[0.12] dark:text-white"
+          className="fixed inset-x-3 top-[74px] sm:inset-x-auto sm:top-full sm:right-0 sm:absolute sm:mt-3 sm:w-[350px] rounded-[24px] bg-white dark:bg-black border border-black/[0.08] dark:border-white/[0.15] shadow-2xl p-4 sm:p-5 text-left z-50 origin-top-right overflow-hidden text-[#1D1D1F] dark:text-white"
         >
           {/* Header com Mês e Navegação */}
-          <div className="flex items-center justify-between pb-3 border-b border-black/[0.06] dark:border-white/[0.08]">
+          <div className="flex items-center justify-between pb-3 border-b border-black/[0.06] dark:border-white/[0.1]">
             <div className="flex items-center gap-2">
-              <div className="w-7 h-7 rounded-full bg-[#009E49]/10 text-[#009E49] flex items-center justify-center">
+              <div className="w-7 h-7 rounded-full bg-[#009E49]/10 text-[#009E49] dark:bg-[#009E49]/20 dark:text-[#30D158] flex items-center justify-center">
                 <CalendarIcon className="w-3.5 h-3.5" />
               </div>
               <div>
@@ -147,7 +147,7 @@ export function SchedulePopover({
               <button
                 type="button"
                 onClick={handleToday}
-                className="px-2 py-0.5 rounded-full text-[11px] font-medium text-[#0066CC] hover:bg-[#0066CC]/10 transition-colors cursor-pointer"
+                className="px-2 py-0.5 rounded-full text-[11px] font-medium text-[#0066CC] dark:text-[#0A84FF] hover:bg-[#0066CC]/10 dark:hover:bg-[#0A84FF]/20 transition-colors cursor-pointer"
                 title="Ir para hoje"
               >
                 Hoje
@@ -156,7 +156,7 @@ export function SchedulePopover({
                 type="button"
                 onClick={handlePrevMonth}
                 aria-label="Mês anterior"
-                className="w-7 h-7 rounded-full flex items-center justify-center text-[#1D1D1F] dark:text-white hover:bg-black/[0.05] dark:hover:bg-white/[0.08] transition-colors cursor-pointer"
+                className="w-7 h-7 rounded-full flex items-center justify-center text-[#1D1D1F] dark:text-white hover:bg-black/[0.05] dark:hover:bg-white/[0.1] transition-colors cursor-pointer"
               >
                 <ChevronLeft className="w-4 h-4" />
               </button>
@@ -164,7 +164,7 @@ export function SchedulePopover({
                 type="button"
                 onClick={handleNextMonth}
                 aria-label="Próximo mês"
-                className="w-7 h-7 rounded-full flex items-center justify-center text-[#1D1D1F] dark:text-white hover:bg-black/[0.05] dark:hover:bg-white/[0.08] transition-colors cursor-pointer"
+                className="w-7 h-7 rounded-full flex items-center justify-center text-[#1D1D1F] dark:text-white hover:bg-black/[0.05] dark:hover:bg-white/[0.1] transition-colors cursor-pointer"
               >
                 <ChevronRight className="w-4 h-4" />
               </button>
@@ -172,7 +172,7 @@ export function SchedulePopover({
                 type="button"
                 onClick={onClose}
                 aria-label="Fechar calendário"
-                className="w-7 h-7 ml-1 rounded-full flex items-center justify-center text-[#6E6E73] hover:text-[#1D1D1F] dark:hover:text-white hover:bg-black/[0.05] dark:hover:bg-white/[0.08] transition-colors cursor-pointer sm:hidden"
+                className="w-7 h-7 ml-1 rounded-full flex items-center justify-center text-[#6E6E73] hover:text-[#1D1D1F] dark:text-[#8E8E93] dark:hover:text-white hover:bg-black/[0.05] dark:hover:bg-white/[0.1] transition-colors cursor-pointer sm:hidden"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -186,10 +186,10 @@ export function SchedulePopover({
                 key={idx}
                 className={`text-[11px] font-semibold ${
                   idx === 0
-                    ? 'text-[#E02020]'
+                    ? 'text-[#E02020] dark:text-[#FF453A]'
                     : idx === 3 || idx === 5
-                    ? 'text-[#009E49]'
-                    : 'text-[#86868B]'
+                    ? 'text-[#009E49] dark:text-[#30D158]'
+                    : 'text-[#86868B] dark:text-[#98989D]'
                 }`}
               >
                 {day}
@@ -210,11 +210,15 @@ export function SchedulePopover({
                   onClick={() => setSelectedDate(item.date)}
                   className={`relative flex flex-col items-center justify-center h-8 rounded-xl text-[12px] font-medium transition-all cursor-pointer ${
                     isSelected
-                      ? 'bg-[#1D1D1F] text-white dark:bg-white dark:text-[#1D1D1F] shadow-sm font-semibold'
+                      ? 'bg-[#1D1D1F] text-white dark:bg-white dark:text-black shadow-sm font-semibold'
                       : item.isCurrentMonth
-                      ? 'text-[#1D1D1F] dark:text-white/90 hover:bg-black/[0.05] dark:hover:bg-white/[0.08]'
-                      : 'text-[#C7C7CC] dark:text-white/20 hover:bg-black/[0.02]'
-                  } ${isToday && !isSelected ? 'ring-1 ring-[#0066CC] font-bold text-[#0066CC]' : ''}`}
+                      ? 'text-[#1D1D1F] dark:text-white hover:bg-black/[0.05] dark:hover:bg-white/[0.1]'
+                      : 'text-[#C7C7CC] dark:text-white/25 hover:bg-black/[0.02]'
+                  } ${
+                    isToday && !isSelected
+                      ? 'ring-1 ring-[#0066CC] dark:ring-[#0A84FF] font-bold text-[#0066CC] dark:text-[#0A84FF]'
+                      : ''
+                  }`}
                 >
                   <span>{item.dayNumber}</span>
                   {item.hasCelebration && (
@@ -223,8 +227,8 @@ export function SchedulePopover({
                         isSelected
                           ? 'bg-[#009E49]'
                           : item.date.getDay() === 0
-                          ? 'bg-[#009E49]'
-                          : 'bg-[#0066CC]'
+                          ? 'bg-[#009E49] dark:bg-[#30D158]'
+                          : 'bg-[#0066CC] dark:bg-[#0A84FF]'
                       }`}
                     />
                   )}
@@ -234,13 +238,13 @@ export function SchedulePopover({
           </div>
 
           {/* Detalhes do dia selecionado */}
-          <div className="mt-3 pt-3 border-t border-black/[0.06] dark:border-white/[0.08]">
+          <div className="mt-3 pt-3 border-t border-black/[0.06] dark:border-white/[0.1]">
             <div className="flex items-center justify-between mb-2">
               <span className="text-[12px] font-semibold text-[#1D1D1F] dark:text-white">
                 {formatDateLabel(selectedDate)}
               </span>
               {isTodaySelected && (
-                <span className="text-[10.5px] font-medium px-2 py-0.5 rounded-full bg-[#0066CC]/10 text-[#0066CC]">
+                <span className="text-[10.5px] font-medium px-2 py-0.5 rounded-full bg-[#0066CC]/10 text-[#0066CC] dark:bg-[#0A84FF]/20 dark:text-[#0A84FF]">
                   Hoje
                 </span>
               )}
@@ -251,20 +255,20 @@ export function SchedulePopover({
                 selectedCelebrations.map((c, i) => (
                   <div
                     key={i}
-                    className="flex items-start gap-2.5 p-2 rounded-xl bg-[#F5F5F7] dark:bg-white/[0.06] text-[12px]"
+                    className="flex items-start gap-2.5 p-2 rounded-xl bg-[#F5F5F7] dark:bg-[#1C1C1E] text-[12px]"
                   >
-                    <div className="px-1.5 py-0.5 rounded-md bg-[#1D1D1F] text-white text-[11px] font-mono font-medium shrink-0 flex items-center gap-1 dark:bg-white dark:text-[#1D1D1F]">
+                    <div className="px-1.5 py-0.5 rounded-md bg-[#1D1D1F] text-white dark:bg-white dark:text-black text-[11px] font-mono font-medium shrink-0 flex items-center gap-1">
                       <Clock className="w-2.5 h-2.5" />
                       <span>{c.time}</span>
                     </div>
                     <div className="min-w-0 flex-1">
                       <p className="font-semibold text-[#1D1D1F] dark:text-white leading-tight flex items-center gap-1">
                         {c.type === 'special' && (
-                          <Sparkles className="w-3 h-3 text-[#E08A00] shrink-0" />
+                          <Sparkles className="w-3 h-3 text-[#E08A00] dark:text-[#FF9F0A] shrink-0" />
                         )}
                         <span className="truncate">{c.title}</span>
                       </p>
-                      <p className="text-[11px] text-[#6E6E73] dark:text-white/60 flex items-center gap-1 mt-0.5">
+                      <p className="text-[11px] text-[#6E6E73] dark:text-[#98989D] flex items-center gap-1 mt-0.5">
                         <MapPin className="w-3 h-3 shrink-0" />
                         <span>{c.place}</span>
                       </p>
@@ -272,8 +276,8 @@ export function SchedulePopover({
                   </div>
                 ))
               ) : (
-                <div className="py-2.5 px-3 rounded-xl bg-[#F5F5F7] dark:bg-white/[0.04] text-center">
-                  <p className="text-[12px] text-[#6E6E73] dark:text-white/60 leading-relaxed">
+                <div className="py-2.5 px-3 rounded-xl bg-[#F5F5F7] dark:bg-[#1C1C1E] text-center">
+                  <p className="text-[12px] text-[#6E6E73] dark:text-[#98989D] leading-relaxed">
                     Sem celebrações comunitárias regulares neste dia. Igreja aberta para oração e
                     secretaria.
                   </p>
@@ -283,9 +287,9 @@ export function SchedulePopover({
           </div>
 
           {/* Rodapé / Link para a seção completa */}
-          <div className="mt-3 pt-2.5 border-t border-black/[0.06] dark:border-white/[0.08] flex items-center justify-between text-[11.5px]">
-            <span className="text-[#86868B] flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#009E49]" />
+          <div className="mt-3 pt-2.5 border-t border-black/[0.06] dark:border-white/[0.1] flex items-center justify-between text-[11.5px]">
+            <span className="text-[#86868B] dark:text-[#98989D] flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#009E49] dark:bg-[#30D158]" />
               Missas regulares
             </span>
             <button
@@ -294,7 +298,7 @@ export function SchedulePopover({
                 onClose();
                 onViewAllMasses();
               }}
-              className="font-semibold text-[#0066CC] hover:underline cursor-pointer"
+              className="font-semibold text-[#0066CC] dark:text-[#0A84FF] hover:underline cursor-pointer"
             >
               Ver tabela completa &rarr;
             </button>
