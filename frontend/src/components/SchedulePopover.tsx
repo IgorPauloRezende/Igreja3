@@ -128,7 +128,7 @@ export function SchedulePopover({
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: -6, scale: 0.97 }}
           transition={{ type: 'spring', stiffness: 420, damping: 30 }}
-          className="fixed inset-x-3 top-[74px] sm:inset-x-auto sm:top-full sm:right-0 sm:absolute sm:mt-3 sm:w-[350px] rounded-[24px] bg-white dark:bg-black border border-black/[0.08] dark:border-white/[0.15] shadow-2xl p-4 sm:p-5 text-left z-50 origin-top-right overflow-hidden text-[#1D1D1F] dark:text-white"
+          className="schedule-calendar-popover fixed inset-x-3 top-[74px] sm:inset-x-auto sm:top-full sm:right-0 sm:absolute sm:mt-3 sm:w-[350px] rounded-[24px] border shadow-2xl p-4 sm:p-5 text-left z-50 origin-top-right overflow-hidden"
         >
           {/* Header com Mês e Navegação */}
           <div className="flex items-center justify-between pb-3 border-b border-black/[0.06] dark:border-white/[0.1]">
@@ -210,9 +210,9 @@ export function SchedulePopover({
                   onClick={() => setSelectedDate(item.date)}
                   className={`relative flex flex-col items-center justify-center h-8 rounded-xl text-[12px] font-medium transition-all cursor-pointer ${
                     isSelected
-                      ? 'bg-[#1D1D1F] text-white dark:bg-white dark:text-black shadow-sm font-semibold'
+                      ? 'schedule-day-selected shadow-sm font-semibold'
                       : item.isCurrentMonth
-                      ? 'text-[#1D1D1F] dark:text-white hover:bg-black/[0.05] dark:hover:bg-white/[0.1]'
+                      ? 'text-inherit hover:bg-black/[0.05] dark:hover:bg-white/[0.1]'
                       : 'text-[#C7C7CC] dark:text-white/25 hover:bg-black/[0.02]'
                   } ${
                     isToday && !isSelected
@@ -255,14 +255,14 @@ export function SchedulePopover({
                 selectedCelebrations.map((c, i) => (
                   <div
                     key={i}
-                    className="flex items-start gap-2.5 p-2 rounded-xl bg-[#F5F5F7] dark:bg-[#1C1C1E] text-[12px]"
+                    className="schedule-celebration-card flex items-start gap-2.5 p-2 rounded-xl text-[12px]"
                   >
-                    <div className="px-1.5 py-0.5 rounded-md bg-[#1D1D1F] text-white dark:bg-white dark:text-black text-[11px] font-mono font-medium shrink-0 flex items-center gap-1">
+                    <div className="schedule-time-badge px-1.5 py-0.5 rounded-md text-[11px] font-mono font-medium shrink-0 flex items-center gap-1">
                       <Clock className="w-2.5 h-2.5" />
                       <span>{c.time}</span>
                     </div>
                     <div className="min-w-0 flex-1">
-                      <p className="font-semibold text-[#1D1D1F] dark:text-white leading-tight flex items-center gap-1">
+                      <p className="font-semibold text-inherit leading-tight flex items-center gap-1">
                         {c.type === 'special' && (
                           <Sparkles className="w-3 h-3 text-[#E08A00] dark:text-[#FF9F0A] shrink-0" />
                         )}
@@ -276,7 +276,7 @@ export function SchedulePopover({
                   </div>
                 ))
               ) : (
-                <div className="py-2.5 px-3 rounded-xl bg-[#F5F5F7] dark:bg-[#1C1C1E] text-center">
+                <div className="schedule-celebration-card py-2.5 px-3 rounded-xl text-center">
                   <p className="text-[12px] text-[#6E6E73] dark:text-[#98989D] leading-relaxed">
                     Sem celebrações comunitárias regulares neste dia. Igreja aberta para oração e
                     secretaria.

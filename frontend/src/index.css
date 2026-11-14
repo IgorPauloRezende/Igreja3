@@ -547,13 +547,82 @@ html.dark .hover\:text-\[\#1D1D1F\]:hover {
   color: #ffffff;
 }
 
-html.dark a.nav-schedule-link {
-  background-color: #ffffff;
-  color: #000000;
+/* Schedule trigger button: Light = black bg, white text. Dark = white bg, black text */
+.nav-schedule-link {
+  background-color: #1d1d1f;
+  color: #ffffff !important;
 }
 
-html.dark a.nav-schedule-link:hover {
-  background-color: #e5e5e5;
+.nav-schedule-link svg {
+  color: #ffffff !important;
+}
+
+.nav-schedule-link span {
+  color: #ffffff !important;
+}
+
+.nav-schedule-link:hover {
+  background-color: #000000;
+}
+
+html.dark .nav-schedule-link {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
+
+html.dark .nav-schedule-link svg {
+  color: #000000 !important;
+}
+
+html.dark .nav-schedule-link span {
+  color: #000000 !important;
+}
+
+html.dark .nav-schedule-link:hover {
+  background-color: #e5e5e5 !important;
+}
+
+/* Schedule Calendar Popover: Light = white bg, black text. Dark = black bg, white text */
+.schedule-calendar-popover {
+  background-color: #ffffff;
+  color: #1d1d1f;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+html.dark .schedule-calendar-popover {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+.schedule-celebration-card {
+  background-color: #f5f5f7;
+  color: #1d1d1f;
+}
+
+html.dark .schedule-celebration-card {
+  background-color: #161618 !important;
+  color: #ffffff !important;
+}
+
+.schedule-time-badge {
+  background-color: #1d1d1f;
+  color: #ffffff;
+}
+
+html.dark .schedule-time-badge {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
+
+.schedule-day-selected {
+  background-color: #1d1d1f !important;
+  color: #ffffff !important;
+}
+
+html.dark .schedule-day-selected {
+  background-color: #ffffff !important;
+  color: #000000 !important;
 }
 
 html.dark .border-black\/\[0\.05\],
