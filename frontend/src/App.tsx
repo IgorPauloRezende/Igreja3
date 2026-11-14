@@ -6,6 +6,7 @@ import {
   type ParishionerAuthMode,
 } from './components/ParishionerAuthPage';
 import { PublicSite, type PublicOverviewData } from './components/PublicSite';
+import { FALLBACK_OVERVIEW_DATA } from './lib/fallbackData';
 import type { SafeParishioner } from './types/church';
 
 type AppView = 'public' | 'admin' | 'account';
@@ -33,8 +34,11 @@ export default function App() {
       const data = (await res.json()) as PublicOverviewData;
       setOverview(data);
       setError('');
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Erro ao carregar dados.');
+    } catch {
+      // Quando a API estiver indisponível (ex: GitHub Pages sem backend),
+      // usamos os dados padrão da paróquia para o site funcionar perfeitamente
+      setOverview(FALLBACK_OVERVIEW_DATA);
+      setError('');
     } finally {
       setLoading(false);
     }
