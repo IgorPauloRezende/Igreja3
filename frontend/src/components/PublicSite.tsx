@@ -40,6 +40,7 @@ import { GlassSurface } from './GlassSurface';
 import { HandsDotMatrixHero } from './HandsDotMatrixHero';
 import { MediaFrame } from './MediaFrame';
 import { ParishEmblem } from './ParishEmblem';
+import { SchedulePopover } from './SchedulePopover';
 
 export interface PublicEvent extends Omit<ChurchEvent, 'rsvps'> {
   rsvpCount: number;
@@ -202,6 +203,10 @@ export function PublicSite({
   // Profile Popover state
   const [profilePopoverOpen, setProfilePopoverOpen] = useState(false);
   const profileRef = useRef<HTMLDivElement | null>(null);
+
+  // Schedule Popover state
+  const [schedulePopoverOpen, setSchedulePopoverOpen] = useState(false);
+  const scheduleRef = useRef<HTMLDivElement | null>(null);
   const [savedProfile, setSavedProfile] = useState<{ name: string; email?: string } | null>(() => {
     try {
       const raw = localStorage.getItem('paroquia_member_profile');
@@ -359,6 +364,7 @@ export function PublicSite({
         setActiveSermon(null);
         setNotifPopoverOpen(false);
         setProfilePopoverOpen(false);
+        setSchedulePopoverOpen(false);
       }
     }
     function onPointerDown(e: MouseEvent) {
@@ -368,6 +374,9 @@ export function PublicSite({
       }
       if (profileRef.current && !profileRef.current.contains(target)) {
         setProfilePopoverOpen(false);
+      }
+      if (scheduleRef.current && !scheduleRef.current.contains(target)) {
+        setSchedulePopoverOpen(false);
       }
     }
     document.addEventListener('keydown', onKeyDown);
@@ -586,6 +595,7 @@ export function PublicSite({
                   onClick={() => {
                     setProfilePopoverOpen((prev) => !prev);
                     setNotifPopoverOpen(false);
+                    setSchedulePopoverOpen(false);
                   }}
                   className={`relative inline-flex items-center justify-center h-9 w-9 sm:h-10 sm:w-10 rounded-full transition-colors cursor-pointer ${
                     parishioner
@@ -756,6 +766,7 @@ export function PublicSite({
                   onClick={() => {
                     setNotifPopoverOpen((prev) => !prev);
                     setProfilePopoverOpen(false);
+                    setSchedulePopoverOpen(false);
                   }}
                   className="relative inline-flex items-center justify-center h-9 w-9 sm:h-10 sm:w-10 rounded-full bg-black/[0.05] hover:bg-black/[0.09] text-[#1D1D1F] transition-colors cursor-pointer"
                 >
@@ -843,13 +854,35 @@ export function PublicSite({
                 </AnimatePresence>
               </div>
 
-              <a
-                href="#missas"
-                onClick={() => handleNavSelect('#missas')}
-                className="nav-schedule-link hidden sm:inline-flex items-center justify-center px-4 min-h-[38px] rounded-full bg-[#1D1D1F] text-white text-[12px] font-medium hover:bg-black transition-colors whitespace-nowrap"
-              >
-                Horários
-              </a>
+              {/* Schedule / Calendário Popover Trigger */}
+              <div ref={scheduleRef} className="relative">
+                <motion.button
+                  type="button"
+                  whileTap={{ scale: 0.94 }}
+                  aria-label="Ver horários e calendário das missas"
+                  aria-expanded={schedulePopoverOpen}
+                  onClick={() => {
+                    setSchedulePopoverOpen((prev) => !prev);
+                    setNotifPopoverOpen(false);
+                    setProfilePopoverOpen(false);
+                  }}
+                  className={`nav-schedule-link inline-flex items-center justify-center gap-1.5 h-9 sm:h-10 px-2.5 sm:px-4 rounded-full text-[12px] font-medium transition-colors whitespace-nowrap cursor-pointer shadow-sm ${
+                    schedulePopoverOpen
+                      ? 'bg-[#009E49] text-white hover:bg-[#007E3A]'
+                      : 'bg-[#1D1D1F] text-white hover:bg-black'
+                  }`}
+                >
+                  <Calendar className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white/90" />
+                  <span className="hidden sm:inline">Horários</span>
+                </motion.button>
+
+                <SchedulePopover
+                  isOpen={schedulePopoverOpen}
+                  onClose={() => setSchedulePopoverOpen(false)}
+                  events={events}
+                  onViewAllMasses={() => handleNavSelect('#missas')}
+                />
+              </div>
 
               <button
                 type="button"
@@ -869,6 +902,7 @@ export function PublicSite({
                 onClick={() => {
                   setNotifPopoverOpen(false);
                   setProfilePopoverOpen(false);
+                  setSchedulePopoverOpen(false);
                   setMobileMenuOpen(true);
                 }}
                 className="lg:hidden inline-flex items-center justify-center h-9 w-9 sm:h-10 sm:w-10 rounded-full bg-black/[0.05] hover:bg-black/[0.09] text-[#1D1D1F] transition-colors cursor-pointer"
@@ -946,7 +980,13 @@ export function PublicSite({
                       <a
                         key={item.href}
                         href={item.href}
-                        onClick={() => {
+                        onClick={(e) => {
+                          if (item.href === '#missas') {
+                            e.preventDefault();
+                            setMobileMenuOpen(false);
+                            setSchedulePopoverOpen(true);
+                            return;
+                          }
                           if (NAV_ITEMS.some((n) => n.url === item.href)) {
                             handleNavSelect(item.href);
                           }
