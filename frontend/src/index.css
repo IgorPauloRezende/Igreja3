@@ -625,6 +625,11 @@ html.dark .schedule-day-selected {
   color: #000000 !important;
 }
 
+/* Instagram icon in dark mode: white */
+html.dark img[src*="instagram"] {
+  filter: brightness(0) invert(1);
+}
+
 html.dark .border-black\/\[0\.05\],
 html.dark .border-black\/\[0\.06\],
 html.dark .border-black\/\[0\.07\],

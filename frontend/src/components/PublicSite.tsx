@@ -69,13 +69,13 @@ interface PublicSiteProps {
 
 type TabKey = 'quemsomos' | 'comunidade' | 'brasao' | 'padroeira' | 'decanato';
 
-function InstagramIcon() {
+function InstagramIcon({ className = 'h-4 w-4 shrink-0' }: { className?: string }) {
   return (
     <img
       src={instagramIcon}
       alt=""
       aria-hidden="true"
-      className="h-4 w-4 shrink-0"
+      className={`${className} dark:brightness-0 dark:invert`}
     />
   );
 }
