@@ -20,9 +20,11 @@ const PROJECT_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), 
 dotenv.config({ path: path.join(PROJECT_ROOT, '.env') });
 
 const PORT = Number(process.env.PORT) || 3000;
-const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
-if (!ADMIN_PASSWORD) {
-  throw new Error('ADMIN_PASSWORD must be set in the environment or .env file.');
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'admin123';
+if (!process.env.ADMIN_PASSWORD) {
+  console.warn(
+    '[AVISO] ADMIN_PASSWORD não encontrado no arquivo .env. Usando senha padrão para desenvolvimento: admin123'
+  );
 }
 const SESSION_SECRET = process.env.SESSION_SECRET || crypto.randomBytes(32).toString('hex');
 const COOKIE_NAME = 'paroquia_admin_session';
